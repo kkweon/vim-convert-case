@@ -1,0 +1,19 @@
+Execute (empty text):
+  let text = ''
+  let expected = []
+  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+
+Execute (split underscore_text):
+  let text = 'underscore_text'
+  let expected = ['underscore', 'text']
+  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+
+Execute (split underscore):
+  let text = 'underscore'
+  let expected = ['underscore']
+  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+
+Execute (split camelCase):
+  let text = 'camelCase'
+  let expected = ['camel', 'Case']
+  AssertEqual expected, Split(text, { c -> c =~# '[A-Z]' }, 1)

@@ -17,3 +17,13 @@ Execute (split camelCase):
   let text = 'camelCase'
   let expected = ['camel', 'Case']
   AssertEqual expected, Split(text, { c -> c =~# '[A-Z]' }, 1)
+
+Execute (IsCamelCase):
+  let text = "camelCase"
+  let expected = 1
+  AssertEqual expected, IsCamelCase(text)
+
+Execute (IsCamelCase not):
+  let text = "camel_Case"
+  let expected = 0
+  AssertEqual expected, IsCamelCase(text)

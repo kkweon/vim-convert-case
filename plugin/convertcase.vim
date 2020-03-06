@@ -1,3 +1,15 @@
+function! s:hasUnderscore(text)
+  return a:text =~ '_'
+endfunction
+
+function! s:hasUpperAscii(text)
+  return a:text =~# '[A-Z]'
+endfunction
+
+function! IsCamelCase(text)
+  return <SID>hasUpperAscii(a:text) && !<SID>hasUnderscore(a:text)
+endfunction
+
 function! Split(text, f, include_split)
   let l:result = []
   let l:temp = ""

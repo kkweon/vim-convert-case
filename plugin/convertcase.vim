@@ -10,6 +10,10 @@ function! IsCamelCase(text)
   return <SID>hasUpperAscii(a:text) && !<SID>hasUnderscore(a:text)
 endfunction
 
+function! IsSnakeCase(text)
+  return <SID>hasUnderscore(a:text)
+endfunction
+
 function! Split(text, f, include_split)
   let l:result = []
   let l:temp = ""
@@ -23,6 +27,8 @@ function! Split(text, f, include_split)
         if a:include_split
           let l:temp .= c
         endif
+      else
+        let l:temp .= c
       endif
     else
       let l:temp .= c
@@ -34,4 +40,12 @@ function! Split(text, f, include_split)
   endif
 
   return l:result
+endfunction
+
+function! ToSnakeCase(word)
+    if IsCamelCase(a:word)
+        let words = Split(a:word, { c -> c=~# '[A-Z]' }, 1)
+        return join(map(words, {_, val -> tolower(val) }), "_")
+    endif
+    return a:word
 endfunction

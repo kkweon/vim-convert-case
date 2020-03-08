@@ -1,0 +1,25 @@
+
+                                         _
+            ___ ___  _ ____   _____ _ __| |_    ___ __ _ ___  ___
+           / __/ _ \| '_ \ \ / / _ \ '__| __|  / __/ _` / __|/ _ \
+           | (_| (_) | | | \ V /  __/ |  | |_  | (_| (_| \__ \  __/
+           \___\___/|_| |_|\_/ \___|_|   \__|  \___\__,_|___/\___|
+
+
+*convert-case* defines a few commands that converts to camelCase, PascalCase,
+snake_case, or hypen-case.
+
+================================================================================
+Section 1. Usage *convert-case-usage*
+
+Suppose you have a variable written in camelCase.
+>
+    kUnlimitedPaddingSize = 8
+<
+Put your cursor to the above word (`kUnlimitedPaddingSize`) and run
+`:ToSnakeCase`. Then, it will convert to the following.
+>
+    k_unlimited_padding_size = 8
+<
+================================================================================
+vim:tw=80:ts=4:expandtab:ft=help:norightleft:

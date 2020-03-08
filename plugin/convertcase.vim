@@ -49,3 +49,56 @@ function! ToSnakeCase(word)
     endif
     return a:word
 endfunction
+
+function! IsPascalCase(word)
+    if len(a:word) == 0
+        return 0
+    endif
+
+    return a:word[0] =~# '[A-Z]' && IsCamelCase(a:word)
+endfunction
+
+function! ToCamelCase(word)
+    if IsPascalCase(a:word)
+        return tolower(a:word[0]) . a:word[1:]
+    elseif IsSnakeCase(a:word)
+        let words = Split(tolower(a:word), { c -> c == '_' }, 0)
+        let words = map(words, {_, w -> toupper(w[0]) . w[1:] })
+        let camelcased_word = join(words, '')
+        return tolower(camelcased_word[0]) . camelcased_word[1:]
+    endif
+
+    return a:word
+endfunction
+
+
+function! ToPascalCase(word)
+    if IsSnakeCase(a:word)
+        let words = Split(tolower(a:word), { c -> c == '_' }, 0)
+        let words = map(words, {_, w -> toupper(w[0]) . w[1:] })
+        return join(words, '')
+    elseif IsCamelCase(a:word)
+        return toupper(a:word[0]) . a:word[1:]
+    endif
+
+    return a:word
+endfunction
+
+function! s:ToCamelCaseCommand()
+    let word = expand("<cword>")
+    execute "normal ciw" . ToCamelCase(word)
+endfunction
+
+function! s:ToSnakeCaseCommand()
+    let word = expand("<cword>")
+    execute "normal ciw" . ToSnakeCase(word)
+endfunction
+
+function! s:ToPascalCaseCommand()
+    let word = expand("<cword>")
+    execute "normal ciw" . ToPascalCase(word)
+endfunction
+
+command! ToCamelCase call <SID>ToCamelCaseCommand()
+command! ToPascalCase call <SID>ToPascalCaseCommand()
+command! ToSnakeCase call <SID>ToSnakeCaseCommand()

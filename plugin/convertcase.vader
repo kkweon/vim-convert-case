@@ -28,6 +28,10 @@ Execute (IsCamelCase not):
   let expected = 0
   AssertEqual expected, IsCamelCase(text)
 
+Execute (IsCamelCase not when empty):
+  let text = ''
+  let expected = 0
+  AssertEqual expected, IsCamelCase(text)
 
 Execute (IsSnakeCase):
   let text = "snake_case"
@@ -53,3 +57,33 @@ Execute (snake_case to snake_case):
   let text = "snake_case"
   let expected = "snake_case"
   AssertEqual expected, ToSnakeCase(text)
+
+Execute (camelCase to camelCase):
+  let text = "camelCase"
+  let expected = "camelCase"
+  AssertEqual expected, ToCamelCase(text)
+
+Execute (PascalCase to camelCase):
+  let text = "PascalCase"
+  let expected = "pascalCase"
+  AssertEqual expected, ToCamelCase(text)
+
+Execute (snake_case to camelCase):
+  let text = "snake_case"
+  let expected = "snakeCase"
+  AssertEqual expected, ToCamelCase(text)
+
+Execute (camelCase to PascalCase):
+  let text = "camelCase"
+  let expected = "CamelCase"
+  AssertEqual expected, ToPascalCase(text)
+
+Execute (PascalCase to PascalCase):
+  let text = "PascalCase"
+  let expected = "PascalCase"
+  AssertEqual expected, ToPascalCase(text)
+
+Execute (camelCase to PascalCase):
+  let text = "snake_case"
+  let expected = "SnakeCase"
+  AssertEqual expected, ToPascalCase(text)

@@ -121,6 +121,6 @@ function! s:ToCommand(func)
 endfunction
 
 command! ToCamelCase call <SID>ToCommand({ w -> ToCamelCase(w) })
-command! ToPascalCase call <SID>ToCommand{ w -> ToPascalCase(w) })
+command! ToPascalCase call <SID>ToCommand({ w -> ToPascalCase(w) })
 command! ToSnakeCase call <SID>ToCommand({ w -> ToSnakeCase(w) })
 command! ToHypenCase call <SID>ToCommand({ w -> ToHypenCase(w) })

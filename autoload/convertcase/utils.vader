@@ -1,124 +1,124 @@
 Execute (empty text):
   let text = ''
   let expected = []
-  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+  AssertEqual expected, convertcase#utils#Split(text, { c -> c == "_" }, 0)
 
 Execute (split underscore_text):
   let text = 'underscore_text'
   let expected = ['underscore', 'text']
-  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+  AssertEqual expected, convertcase#utils#Split(text, { c -> c == "_" }, 0)
 
 Execute (split underscore):
   let text = 'underscore'
   let expected = ['underscore']
-  AssertEqual expected, Split(text, { c -> c == "_" }, 0)
+  AssertEqual expected, convertcase#utils#Split(text, { c -> c == "_" }, 0)
 
 Execute (split camelCase):
   let text = 'camelCase'
   let expected = ['camel', 'Case']
-  AssertEqual expected, Split(text, { c -> c =~# '[A-Z]' }, 1)
+  AssertEqual expected, convertcase#utils#Split(text, { c -> c =~# '[A-Z]' }, 1)
 
-Execute (IsCamelCase):
+Execute (convertcase#utils#IsCamelCase):
   let text = "camelCase"
   let expected = 1
-  AssertEqual expected, IsCamelCase(text)
+  AssertEqual expected, convertcase#utils#IsCamelCase(text)
 
-Execute (IsCamelCase not):
+Execute (convertcase#utils#IsCamelCase not):
   let text = "camel_Case"
   let expected = 0
-  AssertEqual expected, IsCamelCase(text)
+  AssertEqual expected, convertcase#utils#IsCamelCase(text)
 
-Execute (IsCamelCase not when empty):
+Execute (convertcase#utils#IsCamelCase not when empty):
   let text = ''
   let expected = 0
-  AssertEqual expected, IsCamelCase(text)
+  AssertEqual expected, convertcase#utils#IsCamelCase(text)
 
-Execute (IsSnakeCase):
+Execute (convertcase#utils#IsSnakeCase):
   let text = "snake_case"
   let expected = 1
-  AssertEqual expected, IsSnakeCase(text)
+  AssertEqual expected, convertcase#utils#IsSnakeCase(text)
 
-Execute (IsSnakeCase not):
+Execute (convertcase#utils#IsSnakeCase not):
   let text = "NotASnakeCase"
   let expected = 0
-  AssertEqual expected, IsSnakeCase(text)
+  AssertEqual expected, convertcase#utils#IsSnakeCase(text)
 
 Execute (camelCase to snake_case):
   let text = "camelCase"
   let expected = "camel_case"
-  AssertEqual expected, ToSnakeCase(text)
+  AssertEqual expected, convertcase#utils#ToSnakeCase(text)
 
 Execute (PascalCase to snake_case):
   let text = "PascalCase"
   let expected = "pascal_case"
-  AssertEqual expected, ToSnakeCase(text)
+  AssertEqual expected, convertcase#utils#ToSnakeCase(text)
 
 Execute (snake_case to snake_case):
   let text = "snake_case"
   let expected = "snake_case"
-  AssertEqual expected, ToSnakeCase(text)
+  AssertEqual expected, convertcase#utils#ToSnakeCase(text)
 
 Execute (hypen-case to snake_case):
   let text = 'hypen-case'
   let expected = 'hypen_case'
-  AssertEqual expected, ToSnakeCase(text)
+  AssertEqual expected, convertcase#utils#ToSnakeCase(text)
 
 Execute (camelCase to camelCase):
   let text = "camelCase"
   let expected = "camelCase"
-  AssertEqual expected, ToCamelCase(text)
+  AssertEqual expected, convertcase#utils#ToCamelCase(text)
 
 Execute (PascalCase to camelCase):
   let text = "PascalCase"
   let expected = "pascalCase"
-  AssertEqual expected, ToCamelCase(text)
+  AssertEqual expected, convertcase#utils#ToCamelCase(text)
 
 Execute (snake_case to camelCase):
   let text = "snake_case"
   let expected = "snakeCase"
-  AssertEqual expected, ToCamelCase(text)
+  AssertEqual expected, convertcase#utils#ToCamelCase(text)
 
 Execute (hypen-case to camelCase):
   let text = "hypen-case"
   let expected = "hypenCase"
-  AssertEqual expected, ToCamelCase(text)
+  AssertEqual expected, convertcase#utils#ToCamelCase(text)
 
 Execute (camelCase to PascalCase):
   let text = "camelCase"
   let expected = "CamelCase"
-  AssertEqual expected, ToPascalCase(text)
+  AssertEqual expected, convertcase#utils#ToPascalCase(text)
 
 Execute (PascalCase to PascalCase):
   let text = "PascalCase"
   let expected = "PascalCase"
-  AssertEqual expected, ToPascalCase(text)
+  AssertEqual expected, convertcase#utils#ToPascalCase(text)
 
 Execute (camelCase to PascalCase):
   let text = "snake_case"
   let expected = "SnakeCase"
-  AssertEqual expected, ToPascalCase(text)
+  AssertEqual expected, convertcase#utils#ToPascalCase(text)
 
 Execute (hypen-case to PascalCase):
   let text = "hypen-case"
   let expected = "HypenCase"
-  AssertEqual expected, ToPascalCase(text)
+  AssertEqual expected, convertcase#utils#ToPascalCase(text)
 
 Execute (camelCase to hypen-case):
   let text = "camelCase"
   let expected = "camel-case"
-  AssertEqual expected, ToHypenCase(text)
+  AssertEqual expected, convertcase#utils#ToHypenCase(text)
 
 Execute (PascalCase to hypen-case):
   let text = "PascalCase"
   let expected = "pascal-case"
-  AssertEqual expected, ToHypenCase(text)
+  AssertEqual expected, convertcase#utils#ToHypenCase(text)
 
 Execute (camelCase to hypen-case):
   let text = "snake_case"
   let expected = "snake-case"
-  AssertEqual expected, ToHypenCase(text)
+  AssertEqual expected, convertcase#utils#ToHypenCase(text)
 
 Execute (hypen-case to PascalCase):
   let text = "hypen-case"
   let expected = "hypen-case"
-  AssertEqual expected, ToHypenCase(text)
+  AssertEqual expected, convertcase#utils#ToHypenCase(text)

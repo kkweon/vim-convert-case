@@ -1,5 +1,7 @@
 # vim-convert-case
 
+It can convert the current word to camelCase, PascalCase, snake_case, or hypen-case in VIM.
+
 ## Installation
 
 ```shell
@@ -14,4 +16,5 @@ The following commands will be created:
 ToCamelCase
 ToPascalCase
 ToSnakeCase
+ToHypenCase
 ```

@@ -58,6 +58,11 @@ Execute (snake_case to snake_case):
   let expected = "snake_case"
   AssertEqual expected, ToSnakeCase(text)
 
+Execute (hypen-case to snake_case):
+  let text = 'hypen-case'
+  let expected = 'hypen_case'
+  AssertEqual expected, ToSnakeCase(text)
+
 Execute (camelCase to camelCase):
   let text = "camelCase"
   let expected = "camelCase"
@@ -71,6 +76,11 @@ Execute (PascalCase to camelCase):
 Execute (snake_case to camelCase):
   let text = "snake_case"
   let expected = "snakeCase"
+  AssertEqual expected, ToCamelCase(text)
+
+Execute (hypen-case to camelCase):
+  let text = "hypen-case"
+  let expected = "hypenCase"
   AssertEqual expected, ToCamelCase(text)
 
 Execute (camelCase to PascalCase):
@@ -87,3 +97,28 @@ Execute (camelCase to PascalCase):
   let text = "snake_case"
   let expected = "SnakeCase"
   AssertEqual expected, ToPascalCase(text)
+
+Execute (hypen-case to PascalCase):
+  let text = "hypen-case"
+  let expected = "HypenCase"
+  AssertEqual expected, ToPascalCase(text)
+
+Execute (camelCase to hypen-case):
+  let text = "camelCase"
+  let expected = "camel-case"
+  AssertEqual expected, ToHypenCase(text)
+
+Execute (PascalCase to hypen-case):
+  let text = "PascalCase"
+  let expected = "pascal-case"
+  AssertEqual expected, ToHypenCase(text)
+
+Execute (camelCase to hypen-case):
+  let text = "snake_case"
+  let expected = "snake-case"
+  AssertEqual expected, ToHypenCase(text)
+
+Execute (hypen-case to PascalCase):
+  let text = "hypen-case"
+  let expected = "hypen-case"
+  AssertEqual expected, ToHypenCase(text)
